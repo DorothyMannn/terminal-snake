@@ -33,7 +33,7 @@ public class SnakeGame {
             status = Status.WALL; return;
         }
         boolean growing = next.equals(food);
-        if (snake.contains(next)) { status = Status.SELF; return; }
+        if (snake.contains(next) && (growing || !next.equals(snake.getLast()))) { status = Status.SELF; return; }
         snake.addFirst(next);
         if (growing) { score += 10; placeFood(); }
         else snake.removeLast();
